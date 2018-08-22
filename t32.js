@@ -1,5 +1,6 @@
 var bigToe = document.getElementsByClassName('toe');
 var player_one = 1;
+var moveCount = 0;
 
 for(var i =0; i<bigToe.length; i++) {
     bigToe[i].addEventListener('click', clickedSquare);
@@ -16,10 +17,12 @@ function clickedSquare()
             this.innerHTML = "X";
             this.setAttribute('disabled', 'disabled');
             player_one = 2;
-            checkWinner()
+            moveCount++;
+            if(!checkWinner()){
+                isCat();
+            }
         }
         }
-        // );
 
     else
     {
@@ -28,52 +31,60 @@ function clickedSquare()
         if (this.innerHTML === "") {
             this.innerHTML = "O";
             this.setAttribute('disabled', 'disabled');
-            player_one = 1;
-            checkWinner();
+            player_one = 1
+            moveCount++;
+            if(!checkWinner()){
+                isCat();
+            }
+
+
+
         }
     }
-        //);
     }
 }
 
 
 
-//This allows a player to insert an 'x' or 'o'
-// function playerOneSet() {
-//
-//     if (player_one === 1) {
-//         c1.addEventListener('click', x);
-//         c2.addEventListener('click', x);
-//         c3.addEventListener('click', x);
-//         c4.addEventListener('click', x);
-//         c5.addEventListener('click', x);
-//         c6.addEventListener('click', x);
-//         c7.addEventListener('click', x);
-//         c8.addEventListener('click', x);
-//         c9.addEventListener('click', x);
-//     }
-//     else if (player_one === 2) {
-//         c1.addEventListener('click', o);
-//         c2.addEventListener('click', o);
-//         c3.addEventListener('click', o);
-//         c4.addEventListener('click', o);
-//         c5.addEventListener('click', o);
-//         c6.addEventListener('click', o);
-//         c7.addEventListener('click', o);
-//         c8.addEventListener('click', o);
-//         c9.addEventListener('click', o);
-//     }
-//
-// }
-//
-//
-//
-// playerOneSet();
+
 function checkWinner() {
     console.log('Checking for winner');
-    if(bigToe[0].innerText==bigToe[1].innerText &&bigToe[1].innerText ==bigToe[2].innerText && bigToe[2].innerText==="X")
+    if((bigToe[0].innerText==bigToe[1].innerText &&bigToe[1].innerText ==bigToe[2].innerText && bigToe[2].innerText==="X")
+        ||(bigToe[3].innerText==bigToe[4].innerText &&bigToe[4].innerText ==bigToe[5].innerText && bigToe[5].innerText==="X")
+        ||(bigToe[6].innerText==bigToe[7].innerText &&bigToe[7].innerText ==bigToe[8].innerText && bigToe[8].innerText==="X")
+        ||(bigToe[0].innerText==bigToe[3].innerText &&bigToe[3].innerText ==bigToe[6].innerText && bigToe[6].innerText==="X")
+        ||(bigToe[1].innerText==bigToe[4].innerText &&bigToe[4].innerText ==bigToe[7].innerText && bigToe[7].innerText==="X")
+        ||(bigToe[2].innerText==bigToe[5].innerText &&bigToe[5].innerText ==bigToe[8].innerText && bigToe[8].innerText==="X")
+        ||(bigToe[0].innerText==bigToe[4].innerText &&bigToe[4].innerText ==bigToe[8].innerText && bigToe[8].innerText==="X")
+        ||(bigToe[2].innerText==bigToe[4].innerText &&bigToe[4].innerText ==bigToe[6].innerText && bigToe[6].innerText==="X"))
     {
         alert("X wins");
+        return true;
+    }
+    else if((bigToe[0].innerText==bigToe[1].innerText &&bigToe[1].innerText ==bigToe[2].innerText && bigToe[2].innerText==="O")
+        ||(bigToe[3].innerText==bigToe[4].innerText &&bigToe[4].innerText ==bigToe[5].innerText && bigToe[5].innerText==="O")
+        ||(bigToe[6].innerText==bigToe[7].innerText &&bigToe[7].innerText ==bigToe[8].innerText && bigToe[8].innerText==="O")
+        ||(bigToe[0].innerText==bigToe[3].innerText &&bigToe[3].innerText ==bigToe[6].innerText && bigToe[6].innerText==="O")
+        ||(bigToe[1].innerText==bigToe[4].innerText &&bigToe[4].innerText ==bigToe[7].innerText && bigToe[7].innerText==="O")
+        ||(bigToe[2].innerText==bigToe[5].innerText &&bigToe[5].innerText ==bigToe[8].innerText && bigToe[8].innerText==="O")
+        ||(bigToe[0].innerText==bigToe[4].innerText &&bigToe[4].innerText ==bigToe[8].innerText && bigToe[8].innerText==="O")
+        ||(bigToe[2].innerText==bigToe[4].innerText &&bigToe[4].innerText ==bigToe[6].innerText && bigToe[6].innerText==="O"))
+    {
+        alert("O wins");
+        return true;
+    }
+
+}
+
+function isCat() {
+    console.log("Checking for a CAT game");
+    // for (var i = 0; i < 9; i++) {
+    //     if(bigToe[i]== 'X' || bigToe[i] == 'O'){
+    //         alert('The game is CAT');
+    //     }
+// }
+    if(moveCount === 9){
+        alert('The game is CAT');
     }
 
 }
