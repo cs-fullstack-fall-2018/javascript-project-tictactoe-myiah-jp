@@ -3,7 +3,7 @@
 
 // Handle Restart game button
 
-// Grab all the play spaces in the board
+// X Grab all the play spaces in the board
 
 // Clear all the play spaces in the board
 
