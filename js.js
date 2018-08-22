@@ -4,7 +4,7 @@ var squares= document.querySelectorAll("td");
 // {
 //     if ();
 //     {
-//
+// document.write
 //     }
 //
 // }
